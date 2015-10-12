@@ -1,9 +1,11 @@
 package com.android.blowfishanagram;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class Settings extends AppCompatActivity {
 
@@ -33,5 +35,18 @@ public class Settings extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    //May want to refactor in own class
+    public void about(View view){
+        Intent intent = new Intent(this, About.class);
+        startActivity(intent);
+    }
+
+    public void back(View view){
+        //TODO: Refactor so it checks the acivity stack and goes back to last activity
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

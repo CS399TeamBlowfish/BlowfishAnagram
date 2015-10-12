@@ -16,6 +16,8 @@
         android:id="@+id/btnPlayAgain"
         android:layout_marginBottom="53dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="game"
+        />
 
 </RelativeLayout>
