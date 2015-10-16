@@ -7,11 +7,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+
+
 public class Game extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Challenges challenges = new Challenges();
+        String challenge = challenges.getChallenge(0);
         setContentView(R.layout.activity_game);
     }
 
