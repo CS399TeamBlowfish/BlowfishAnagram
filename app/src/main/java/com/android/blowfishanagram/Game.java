@@ -57,7 +57,8 @@ public class Game extends AppCompatActivity {
 
             public void onFinish() {
                 GameClock.setText("Time is up!");
-                showTimesUpDialog();
+                //showTimesUpDialog();
+                results();
             }
         }.start();
 
@@ -168,7 +169,7 @@ public class Game extends AppCompatActivity {
         Intent intent = new Intent(this, Results.class);
         Bundle bundle = new Bundle();
         bundle.putInt("solved", solved);
-        intent.putExtra("results", bundle);
+        intent.putExtra("solved", solved);
         startActivity(intent);
     }
 

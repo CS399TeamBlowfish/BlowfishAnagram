@@ -35,12 +35,7 @@ public class Results extends AppCompatActivity {
 
         // get data passed from Game activity
         Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-
-        // check if bundle has data
-        if(bundle != null) {
-            solved = bundle.getInt("solved");
-        }
+        solved = intent.getIntExtra("solved", 0);
 
         unsolved = 10 - solved;
         correct.setText("Correct: " + solved);

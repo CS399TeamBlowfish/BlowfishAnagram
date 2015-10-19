@@ -4,6 +4,30 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.android.blowfishanagram.About">
+    tools:context="com.android.blowfishanagram.About"
+    android:id="@+id/About"
+    android:background="#ffe3dd">
 
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Our core group of developers are Matthew Enright, Leia Trice,Alex Lanza and Dylan La Frenz. We are all currently attending Northern Arizona University and this is our anagram app."
+        android:id="@+id/textView3"
+        android:layout_marginBottom="45dp"
+        android:textColor="#ff361f"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:background="@drawable/loego"
+        android:layout_marginTop="43dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
