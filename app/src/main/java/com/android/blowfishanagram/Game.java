@@ -65,6 +65,10 @@ public class Game extends AppCompatActivity {
         skipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //TODO make old buttons go away.
+                TableLayout table = (TableLayout) findViewById(R.id.tableForButtons);
+                table.removeAllViews();
                 userSolution="";
                 userAttempt.setText(userSolution);
                 populateButtons();
