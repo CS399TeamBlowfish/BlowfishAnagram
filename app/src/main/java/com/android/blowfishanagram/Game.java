@@ -64,6 +64,10 @@ public class Game extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO make old buttons go away.
+                TableLayout table = (TableLayout) findViewById(R.id.tableForButtons);
+                table.removeAllViews();
+                userSolution="";
+                userAttempt.setText(userSolution);
                 populateButtons();
             }
         });
