@@ -27,6 +27,7 @@ public class Game extends AppCompatActivity {
     private long total;
 
     private Button skipButton;
+    private Button startOver;
     
     private Button[] buttons;
     private String challenge;
@@ -64,6 +65,18 @@ public class Game extends AppCompatActivity {
             public void onClick(View v) {
                 //TODO make old buttons go away.
                 populateButtons();
+            }
+        });
+
+        startOver = (Button) findViewById(R.id.startOver);
+        startOver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userSolution="";
+                userAttempt.setText(userSolution);
+                for(int i=0; i<buttons.length;i++){
+                    buttons[i].setEnabled(true);
+                }
             }
         });
         populateButtons();

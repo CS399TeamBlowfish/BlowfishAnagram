@@ -27,10 +27,16 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_span="4"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Skip"
                     android:id="@+id/skipButton" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Start Over"
+                    android:id="@+id/startOver" />
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
