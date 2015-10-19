@@ -1,16 +1,19 @@
 package com.android.blowfishanagram;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
 
 public class Game extends AppCompatActivity {
+    TextView GameClock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,18 @@ public class Game extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.ic_blowfish);
+
+        GameClock = (TextView) findViewById(R.id.textViewGameClock);
+        new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                GameClock.setText("seconds remaining: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                GameClock.setText("done!");
+            }
+        }.start();
     }
 
     @Override
