@@ -24,25 +24,23 @@ public class Game extends AppCompatActivity {
     TextView userAttempt;
     private CountDownTimer cdTimer;
     private long total;
-
-
-//public class Game extends AppCompatActivity {
+    
     private Button[] buttons;
-    private int index=0;
-    private int rows;
-    //private int cols;
     private String challenge;
+    private String solution;
     private String userSolution="";
+    TableLayout table;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Challenges challenges = new Challenges();
-        String challenge = challenges.getChallenge(0);
         setContentView(R.layout.activity_game);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.ic_blowfish);
 
         total = 30000;
+        table = (TableLayout) findViewById(R.id.tableForButtons);
+
         GameClock = (TextView) findViewById(R.id.textViewGameClock);
         userAttempt = (TextView) findViewById(R.id.textViewUserAttempt);
         cdTimer = new CountDownTimer(total, 1000) {
@@ -57,6 +55,7 @@ public class Game extends AppCompatActivity {
                 showTimesUpDialog();
             }
         }.start();
+
 
         populateButtons();
     }
@@ -134,6 +133,7 @@ public class Game extends AppCompatActivity {
     public void populateButtons(){
         Challenges challenges = new Challenges();
         Random indexGenerator = new Random();
+        int index=indexGenerator.nextInt(10);
         int loopCounter=0;          //keeps there from being an infinite loop if all the challenges have been solved
         while (loopCounter!= 10 &&  challenges.getSolved(index)){
             index=indexGenerator.nextInt(10);
@@ -141,8 +141,8 @@ public class Game extends AppCompatActivity {
         }
         if(loopCounter!=10) {
             challenge = challenges.getChallenge(index);
-            TableLayout table = (TableLayout) findViewById(R.id.tableForButtons);
-            rows = challenge.length()/4;
+            solution = challenges.getSolution(index);
+            int rows = challenge.length()/4;
             buttons=new Button[challenge.length()];
             int cols=0;
             int buttonsMade=0;
@@ -172,6 +172,50 @@ public class Game extends AppCompatActivity {
             }
         }
         else{
+            results();
+        }
+    }
+
+    public void populateButtons(View view) {
+        Challenges challenges = new Challenges();
+        Random indexGenerator = new Random();
+        int index = indexGenerator.nextInt(10);
+        int loopCounter = 0;          //keeps there from being an infinite loop if all the challenges have been solved
+        while (loopCounter != 10 && challenges.getSolved(index)) {
+            index = indexGenerator.nextInt(10);
+            loopCounter++;
+        }
+        if (loopCounter != 10) {
+            challenge = challenges.getChallenge(index);
+            solution = challenges.getSolution(index);
+            int rows = challenge.length() / 4;
+            buttons = new Button[challenge.length()];
+            int cols = 0;
+            int buttonsMade = 0;
+            for (int row = 0; row <= rows; row++) {
+                TableRow tablerow = new TableRow(this);
+                table.addView(tablerow);
+                while (cols < 4 && buttonsMade < challenge.length()) {
+                    final char chalChar = challenge.charAt(buttonsMade);
+                    Button button = new Button(this);
+                    button.setText(String.valueOf(chalChar));
+                    button.setPadding(0, 0, 0, 0);     //keeps text from being clipped
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Button b = (Button) v;
+                            userSolution += b.getText().toString();
+                        }
+                    });
+                    buttons[buttonsMade] = button;
+                    tablerow.addView(button);
+
+                    cols++;
+                    buttonsMade++;
+                }
+                cols = 0;
+            }
+        } else {
             results();
         }
     }
