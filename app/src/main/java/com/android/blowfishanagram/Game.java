@@ -34,7 +34,7 @@ public class Game extends AppCompatActivity {
     private String solution;
     private String userSolution="";
 
-    private int solved;
+    private int solved=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,7 +159,7 @@ public class Game extends AppCompatActivity {
     public void populateButtons(){
         TableLayout table = (TableLayout) findViewById(R.id.tableForButtons);
         table.removeAllViewsInLayout();
-        Challenges challenges = new Challenges();
+        final Challenges challenges = new Challenges();
         Random indexGenerator = new Random();
         int index=indexGenerator.nextInt(10);
         int loopCounter=0;          //keeps there from being an infinite loop if all the challenges have been solved
@@ -167,6 +167,7 @@ public class Game extends AppCompatActivity {
             index=indexGenerator.nextInt(10);
             loopCounter++;
         }
+        final int finalIndex = index;
         if(loopCounter!=10) {
             challenge = challenges.getChallenge(index);
             solution = challenges.getSolution(index);
@@ -192,6 +193,7 @@ public class Game extends AppCompatActivity {
                             userAttempt.setText(userSolution);
                             if(userSolution.equals(solution)){
                                 Toast.makeText(getApplicationContext(),"Good job! Try another!",Toast.LENGTH_SHORT).show();
+                                challenges.setSolved(finalIndex);
                                 populateButtons();
                                 solved++;
                                 userSolution="";
