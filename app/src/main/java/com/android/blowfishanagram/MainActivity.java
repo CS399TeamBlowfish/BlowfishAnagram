@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
     }
 
     @Override
@@ -30,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        //if (id == R.id.action_settings) {
+        //    return true;
+        //}
 
         return super.onOptionsItemSelected(item);
     }
@@ -43,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void settings(View view){
-        Intent intent = new Intent(this, Settings.class);
-        startActivity(intent);
-    }
+    //public void settings(View view){
+    //    Intent intent = new Intent(this, Settings.class);
+    //    startActivity(intent);
+    //}
 }

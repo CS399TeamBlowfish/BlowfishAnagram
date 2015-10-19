@@ -1,6 +1,7 @@
 package com.android.blowfishanagram;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,6 +18,8 @@ public class Game extends AppCompatActivity {
         Challenges challenges = new Challenges();
         String challenge = challenges.getChallenge(0);
         setContentView(R.layout.activity_game);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.ic_blowfish);
     }
 
     @Override
@@ -32,24 +35,30 @@ public class Game extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        // Handle item selection
+        switch (id) {
+            case R.id.action_endgame:
+                endGame();
+                return true;
+            case R.id.action_about:
+                about();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     //May want to refactor in own class
-    public void endGame(View view){
+    public void endGame(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    public void settings(View view){
-        Intent intent = new Intent(this, Settings.class);
+    public void about(){
+        Intent intent = new Intent(this, About.class);
         startActivity(intent);
     }
+
+    //Delete
     public void results(View view){
         Intent intent = new Intent(this, Results.class);
         startActivity(intent);

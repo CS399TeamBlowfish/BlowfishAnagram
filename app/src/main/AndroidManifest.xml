@@ -5,6 +5,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:logo="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -18,15 +19,13 @@
         </activity>
         <activity
             android:name=".Game"
-            android:label="@string/title_activity_game" >
+            android:label="@string/title_activity_game"
+            android:logo="@mipmap/ic_launcher"
+            >
         </activity>
         <activity
             android:name=".Results"
             android:label="@string/title_activity_results" >
-        </activity>
-        <activity
-            android:name=".Settings"
-            android:label="@string/title_activity_settings" >
         </activity>
         <activity
             android:name=".About"
