@@ -23,7 +23,7 @@ public class Game extends AppCompatActivity {
     TextView GameClock;
 
 
-public class Game extends AppCompatActivity {
+//public class Game extends AppCompatActivity {
     private Button[] buttons;
     private int index=0;
     private int rows;
