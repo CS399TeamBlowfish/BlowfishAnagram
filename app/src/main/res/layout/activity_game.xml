@@ -30,7 +30,6 @@
                     android:layout_span="4"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Skip"
-                    android:onClick="populateButtons"
                     android:id="@+id/skipButton" />
             </LinearLayout>
             <LinearLayout
@@ -41,7 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Large Text"
+                    android:text=""
                     android:layout_column="0"
                     android:id="@+id/textViewUserAttempt"
                     />

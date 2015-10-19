@@ -16,6 +16,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.support.v4.app.DialogFragment;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -61,10 +62,12 @@ public class Game extends AppCompatActivity {
         skipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO make old buttons go away.
                 populateButtons();
             }
         });
         populateButtons();
+
     }
     @Override
     protected void onStart() {
@@ -170,6 +173,12 @@ public class Game extends AppCompatActivity {
                             v.setEnabled(false);
                             userSolution+=b.getText().toString();
                             userAttempt.setText(userSolution);
+                            if(userSolution.equals(solution)){
+                                Toast.makeText(getApplicationContext(),"Good job! Try another!",Toast.LENGTH_SHORT).show();
+                                populateButtons();
+                                userSolution="";
+                                userAttempt.setText(userSolution);
+                            }
                         }
                     });
                     buttons[buttonsMade] = button;
