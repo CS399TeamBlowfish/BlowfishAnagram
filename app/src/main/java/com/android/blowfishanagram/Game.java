@@ -1,7 +1,11 @@
 package com.android.blowfishanagram;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
+import android.os.CountDownTimer;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,9 +14,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
+import android.support.v4.app.DialogFragment;
 
 import java.util.Random;
 
+public class Game extends AppCompatActivity {
+    TextView GameClock;
 
 
 public class Game extends AppCompatActivity {
@@ -25,9 +33,24 @@ public class Game extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Challenges challenges = new Challenges();
+        String challenge = challenges.getChallenge(0);
         setContentView(R.layout.activity_game);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.ic_blowfish);
+
+        GameClock = (TextView) findViewById(R.id.textViewGameClock);
+        new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                GameClock.setText("seconds remaining: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                GameClock.setText("Time is up!");
+                showTimesUpDialog();
+            }
+        }.start();
 
         populateButtons();
     }
@@ -117,4 +140,12 @@ public class Game extends AppCompatActivity {
             results();
         }
     }
+
+    private void showTimesUpDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        GameTimeIsUpDialogFragment timeIsUpDialog = new GameTimeIsUpDialogFragment();
+        timeIsUpDialog.show(fm, "fragment_time_is_up");
+
+    }
+
 }
