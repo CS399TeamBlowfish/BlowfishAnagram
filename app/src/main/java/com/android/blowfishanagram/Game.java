@@ -1,15 +1,18 @@
 package com.android.blowfishanagram;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.CountDownTimer;
-import android.support.v7.app.ActionBar;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
+import android.support.v4.app.DialogFragment;
 
 
 public class Game extends AppCompatActivity {
@@ -32,7 +35,8 @@ public class Game extends AppCompatActivity {
             }
 
             public void onFinish() {
-                GameClock.setText("done!");
+                GameClock.setText("Time is up!");
+                showTimesUpDialog();
             }
         }.start();
     }
@@ -78,4 +82,13 @@ public class Game extends AppCompatActivity {
         Intent intent = new Intent(this, Results.class);
         startActivity(intent);
     }
+
+    private void showTimesUpDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        GameTimeIsUpDialogFragment timeIsUpDialog = new GameTimeIsUpDialogFragment();
+        timeIsUpDialog.show(fm, "fragment_time_is_up");
+
+    }
+
 }
+
