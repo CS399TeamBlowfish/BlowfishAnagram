@@ -34,6 +34,8 @@ public class Game extends AppCompatActivity {
     private String solution;
     private String userSolution="";
 
+    private int solved;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +65,8 @@ public class Game extends AppCompatActivity {
         skipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO make old buttons go away.
+                userSolution="";
+                userAttempt.setText(userSolution);
                 populateButtons();
             }
         });
@@ -155,6 +158,7 @@ public class Game extends AppCompatActivity {
 
     public void populateButtons(){
         TableLayout table = (TableLayout) findViewById(R.id.tableForButtons);
+        table.removeAllViewsInLayout();
         Challenges challenges = new Challenges();
         Random indexGenerator = new Random();
         int index=indexGenerator.nextInt(10);
@@ -189,6 +193,7 @@ public class Game extends AppCompatActivity {
                             if(userSolution.equals(solution)){
                                 Toast.makeText(getApplicationContext(),"Good job! Try another!",Toast.LENGTH_SHORT).show();
                                 populateButtons();
+                                solved++;
                                 userSolution="";
                                 userAttempt.setText(userSolution);
                             }
