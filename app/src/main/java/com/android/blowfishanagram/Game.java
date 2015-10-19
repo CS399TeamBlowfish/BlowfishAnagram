@@ -21,6 +21,8 @@ import java.util.Random;
 
 public class Game extends AppCompatActivity {
     TextView GameClock;
+    private CountDownTimer cdTimer;
+    private long total;
 
 
 //public class Game extends AppCompatActivity {
@@ -39,11 +41,13 @@ public class Game extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.ic_blowfish);
 
+        total = 30000;
         GameClock = (TextView) findViewById(R.id.textViewGameClock);
-        new CountDownTimer(30000, 1000) {
+        cdTimer = new CountDownTimer(total, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 GameClock.setText("seconds remaining: " + millisUntilFinished / 1000);
+                total=millisUntilFinished;
             }
 
             public void onFinish() {
@@ -54,7 +58,35 @@ public class Game extends AppCompatActivity {
 
         populateButtons();
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
