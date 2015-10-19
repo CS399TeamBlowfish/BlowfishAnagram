@@ -6,25 +6,59 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.android.blowfishanagram.Game">
 
-
-    <TableLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/tableForButtons"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:stretchColumns="*"
-        android:id="@+id/tableForButtons">
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_span="4"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/textViewGameClock" />
-        </TableRow>
+        android:layout_alignParentEnd="true">
 
-    </TableLayout>
+            <LinearLayout
+                        android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                       android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="4"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Medium Text"
+                    android:id="@+id/textViewGameClock" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Large Text"
+                    android:layout_column="0"
+                    android:id="@+id/textViewUserAttempt"
+                    />
+            </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:stretchColumns="*"
+            android:id="@+id/tableForButtons">
+
+
+
+        </TableLayout>
+    </LinearLayout>
+    </LinearLayout>
+
+
+
 </RelativeLayout>

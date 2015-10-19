@@ -21,6 +21,7 @@ import java.util.Random;
 
 public class Game extends AppCompatActivity {
     TextView GameClock;
+    TextView userAttempt;
     private CountDownTimer cdTimer;
     private long total;
 
@@ -43,6 +44,7 @@ public class Game extends AppCompatActivity {
 
         total = 30000;
         GameClock = (TextView) findViewById(R.id.textViewGameClock);
+        userAttempt = (TextView) findViewById(R.id.textViewUserAttempt);
         cdTimer = new CountDownTimer(total, 1000) {
 
             public void onTick(long millisUntilFinished) {
@@ -157,6 +159,7 @@ public class Game extends AppCompatActivity {
                         public void onClick(View v) {
                             Button b = (Button) v;
                             userSolution+=b.getText().toString();
+                            userAttempt.setText(userSolution);
                         }
                     });
                     buttons[buttonsMade] = button;
