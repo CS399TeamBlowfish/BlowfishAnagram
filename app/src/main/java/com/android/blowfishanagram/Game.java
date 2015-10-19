@@ -28,6 +28,7 @@ public class Game extends AppCompatActivity {
 
     private Button skipButton;
     private Button startOver;
+//    private Button results; test button
     
     private Button[] buttons;
     private String challenge;
@@ -60,6 +61,14 @@ public class Game extends AppCompatActivity {
             }
         }.start();
 
+        // test results page
+//        results = (Button) findViewById(R.id.results);
+//        results.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                results();
+//            }
+//        });
 
         skipButton = (Button) findViewById(R.id.skipButton);
         skipButton.setOnClickListener(new View.OnClickListener() {
@@ -154,9 +163,12 @@ public class Game extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //Delete
+    //Go to results page. Pass in solved results
     public void results(){
         Intent intent = new Intent(this, Results.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("solved", solved);
+        intent.putExtra("results", bundle);
         startActivity(intent);
     }
 

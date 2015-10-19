@@ -6,18 +6,51 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.android.blowfishanagram.Results">
 
-    <TextView android:text="Results" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <!--<TextView android:text="Results" android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/textView2" />-->
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Play Again"
         android:id="@+id/btnPlayAgain"
-        android:layout_marginBottom="53dp"
+        android:onClick="game"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="game"
-        />
+        android:layout_marginBottom="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textViewCorrect"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="71dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textViewWrong"
+        android:layout_marginTop="85dp"
+        android:layout_below="@+id/textViewCorrect"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textViewTotal"
+        android:layout_marginBottom="76dp"
+        android:layout_above="@+id/btnPlayAgain"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>

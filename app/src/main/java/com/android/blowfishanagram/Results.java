@@ -7,8 +7,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 public class Results extends AppCompatActivity {
+    TextView correct;
+    TextView wrong;
+    TextView total;
+    private int solved;
+    private int unsolved;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +24,24 @@ public class Results extends AppCompatActivity {
         //adds back button
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        correct = (TextView) findViewById(R.id.textViewCorrect);
+        wrong = (TextView) findViewById(R.id.textViewWrong);
+        total = (TextView) findViewById(R.id.textViewTotal);
+
+        // get data passed from Game activity
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        // check if bundle has data
+        if(bundle != null) {
+            solved = bundle.getInt("solved");
+        }
+
+        unsolved = 10 - solved;
+        correct.setText("Correct: " + solved);
+        wrong.setText("Wrong/Unanswered: " + unsolved);
+        total.setText("Total: 10");
     }
 
     @Override

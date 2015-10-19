@@ -24,6 +24,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Medium Text"
                     android:id="@+id/textViewGameClock" />
+
             </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -42,6 +43,14 @@
                     android:text="Start Over"
                     android:id="@+id/startOver"
  />
+                    <!-- test button for results -->
+                    <!--<Button-->
+                        <!--style="?android:attr/buttonStyleSmall"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Results"-->
+                        <!--android:id="@+id/results" />-->
+
                 </LinearLayout>
 
             <LinearLayout
