@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Button;
+
 
 public class Results extends AppCompatActivity {
     TextView correct;
@@ -15,6 +18,7 @@ public class Results extends AppCompatActivity {
     TextView total;
     private int solved;
     private int unsolved;
+    private Button playAgain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,15 @@ public class Results extends AppCompatActivity {
         correct.setText("Correct: " + solved);
         wrong.setText("Wrong/Unanswered: " + unsolved);
         total.setText("Total: 10");
+
+        playAgain = (Button) findViewById(R.id.btnPlayAgain);
+        playAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), Game.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
