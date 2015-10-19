@@ -33,6 +33,7 @@ public class Challenges {
     public void setSolved(int index){
         isSolved[index]=true;
     }
+    public boolean getSolved(int index) { return isSolved[index]; }
 
 
 

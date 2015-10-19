@@ -7,19 +7,29 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+
+import java.util.Random;
 
 
 
 public class Game extends AppCompatActivity {
-
+    private Button[] buttons;
+    private int index=0;
+    private int rows;
+    //private int cols;
+    private String challenge;
+    private String userSolution="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Challenges challenges = new Challenges();
-        String challenge = challenges.getChallenge(0);
         setContentView(R.layout.activity_game);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.ic_blowfish);
+
+        populateButtons();
     }
 
     @Override
@@ -59,8 +69,52 @@ public class Game extends AppCompatActivity {
     }
 
     //Delete
-    public void results(View view){
+    public void results(){
         Intent intent = new Intent(this, Results.class);
         startActivity(intent);
+    }
+
+    public void populateButtons(){
+        Challenges challenges = new Challenges();
+        Random indexGenerator = new Random();
+        int loopCounter=0;          //keeps there from being an infinite loop if all the challenges have been solved
+        while (loopCounter!= 10 &&  challenges.getSolved(index)){
+            index=indexGenerator.nextInt(10);
+            loopCounter++;
+        }
+        if(loopCounter!=10) {
+            challenge = challenges.getChallenge(index);
+            TableLayout table = (TableLayout) findViewById(R.id.tableForButtons);
+            rows = challenge.length()/4;
+            buttons=new Button[challenge.length()];
+            int cols=0;
+            int buttonsMade=0;
+            for(int row=0;row<=rows;row++){
+                TableRow tablerow = new TableRow(this);
+                table.addView(tablerow);
+                while(cols<4 && buttonsMade<challenge.length()){
+                    final char chalChar = challenge.charAt(buttonsMade);
+                    Button button=new Button(this);
+                    button.setText(String.valueOf(chalChar));
+                    button.setPadding(0,0,0,0);     //keeps text from being clipped
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Button b = (Button) v;
+                            userSolution+=b.getText().toString();
+                        }
+                    });
+                    buttons[buttonsMade] = button;
+                    tablerow.addView(button);
+
+                    cols++;
+                    buttonsMade++;
+                }
+                cols=0;
+            }
+        }
+        else{
+            results();
+        }
     }
 }
