@@ -12,6 +12,7 @@ public class Challenges {
     };
     private boolean[] isSolved = {
             false,false,false,false,false,false,false,false,false,false
+            //true,true,true,true,true,true,true,true,true,true     //to test whether when they are all solved if it goes to the results page
     };
     /*
     @param index takes in the index for the challenge

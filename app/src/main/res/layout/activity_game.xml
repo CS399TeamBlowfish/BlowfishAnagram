@@ -25,6 +25,25 @@
                 android:text="Medium Text"
                 android:id="@+id/textViewGameClock" />
         </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="4"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Large Text"
+                android:id="@+id/userSolution" />
+        </TableRow>
+        <TableRow>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="4"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Skip"
+                android:onClick="populateButtons"
+                android:id="@+id/skipButton" />
+        </TableRow>
 
     </TableLayout>
 </RelativeLayout>
